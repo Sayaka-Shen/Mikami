@@ -42,6 +42,12 @@
         [SerializeField] private Text textQuota;
         private int quota;
 
+        public int Quota
+        {
+            get { return quota; }
+            set { quota = value; }
+        }
+
         private void Start()
         {
             GenerateQuota();
@@ -65,14 +71,11 @@
                     currentSpawnTimer = 0f;
                 }
             }
-
-            if (enemyInstancePrefab != null)
+            
+            if (heroAttack.AttackMode && quota <= 0) 
             {
-                if (heroAttack.AttackMode && quota <= 0 && enemyInstancePrefab.GetComponent<EnemyLife>().CurrentHealth <= 0) 
-                {
-                    StartCoroutine(WaitBeforeGoingBack());
-                }   
-            }
+                StartCoroutine(WaitBeforeGoingBack());
+            }   
         }
 
         private void SpawnEnemyPrefab()
@@ -95,12 +98,10 @@
                     break;
             }
             
-            if (quota > 0 && enemySpawned.Count <= 5)
+            if (quota > 0 && enemySpawned.Count <= 6)
             {
                 enemyInstancePrefab = Instantiate(enemyPrefab, enemyPosition.position, Quaternion.identity);
-                enemySpawned.Add(enemyInstancePrefab);    
-
-                quota--;
+                enemySpawned.Add(enemyInstancePrefab);
             }
             else
             {
@@ -113,7 +114,7 @@
 
         private void GenerateQuota()
         {
-            quota = Random.Range(5, 10);
+            quota = Random.Range(5, 11);
         }
 
         private void DisplayQuota()
@@ -129,8 +130,8 @@
 
         IEnumerator WaitBeforeGoingBack()
         {
-            yield return new WaitForSeconds(1);
-            Debug.Log("Evryone is dead bro");
+            yield return new WaitForSeconds(2);
+            Debug.Log("Evryone is dead bro"); 
             heroTransform.position = lastTeleportPosition;
         }
     }

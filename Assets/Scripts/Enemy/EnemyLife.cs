@@ -22,6 +22,9 @@ public class EnemyLife : MonoBehaviour
     [Header("Enemy Visual")] 
     [SerializeField] private GameObject enemyVisual;
     [SerializeField] private GameObject lifeBarEnemyVisual;
+
+    [Header("Spawn Enemy")] 
+    private SpawnEnemy spawnEnemy;
     
     
     // Event for enemy life
@@ -34,6 +37,7 @@ public class EnemyLife : MonoBehaviour
     
     void Start()
     {
+        spawnEnemy = FindObjectOfType<SpawnEnemy>();
         currentHealth = maxHealth;
     }
 
@@ -60,6 +64,13 @@ public class EnemyLife : MonoBehaviour
         
         enemyVisual.SetActive(false);
         lifeBarEnemyVisual.SetActive(false);
+        
+        spawnEnemy.Quota--;
+
+        if (spawnEnemy.Quota < 0)
+        {
+            spawnEnemy.Quota = 0;
+        }
 
         StartCoroutine(DestroyGameobject());
     }   

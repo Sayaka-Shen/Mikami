@@ -73,7 +73,6 @@ public class HeroAttack : MonoBehaviour
         
         MeleeAttack();
     }
-
     
     private void MeleeAttack()
     {
