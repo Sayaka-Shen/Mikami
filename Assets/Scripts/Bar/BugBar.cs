@@ -14,14 +14,15 @@ public class BugBar : MonoBehaviour
 
     [Header("Teleporter")] 
     [SerializeField] private Transform teleporterArene;
+
+    [Header("Enemy Spawner")] 
+    [SerializeField] private SpawnEnemy enemySpawner;
     
     private void Start()
     {
         heroMovement.OnBugging += HeroMovement_OnBugging;
         
         imageBarComponent.fillAmount = 0f;
-        
-        Hide();
     }
 
     private void Update()
@@ -35,31 +36,13 @@ public class BugBar : MonoBehaviour
         {
             imageBarComponent.fillAmount = e.buggingNumberEvent;
         
-            if (Mathf.Approximately(imageBarComponent.fillAmount, 0f) || Mathf.Approximately(imageBarComponent.fillAmount, 1f))
-            {
-                Hide();
-            }
-            else
-            {
-                Show();
-            }
-        
             if(Mathf.Approximately(imageBarComponent.fillAmount, 1f))
             {
+                enemySpawner.UpdateLastTeleportPosition(characterTransform.position);
                 characterTransform.position = teleporterArene.position;
                 heroAttack.AttackMode = true;
             }   
         }
-    }
-    
-    private void Show()
-    {
-        gameObject.SetActive(true);
-    }
-
-    private void Hide()
-    {
-        gameObject.SetActive(false);
     }
 
     private void KeepFlip()

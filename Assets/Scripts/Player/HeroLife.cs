@@ -1,32 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyLife : MonoBehaviour
+public class HeroLife : MonoBehaviour
 {
-    [Header("Enemy Life Parameter")] 
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
-    
-    void Start()
+
+    private void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    private void PlayerTakeDamage(int damage)
     {
         currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            EnemyDeath();
+            PlayerDeath();
         }
     }
-    
-    private void EnemyDeath()
+
+    private void PlayerDeath()
     {
-        Debug.Log("Enemy Died");
         Destroy(gameObject);
     }
 }

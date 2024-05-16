@@ -14,6 +14,11 @@ public class HeroMovement : MonoBehaviour
     private Rigidbody2D rigibodyPlayer;
     private bool isFacingRight = true;
 
+    public bool IsFacingRight
+    {
+        get { return isFacingRight; }
+    }
+
     [Header("Jump")] 
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private Transform groundCheck;
@@ -36,7 +41,7 @@ public class HeroMovement : MonoBehaviour
     private float dashTimer = 0f;
     private bool canDash;
     private float dashCooldownInterval = 0f;
-    
+
     [Header("Attack Mode")]
     private HeroAttack heroAttack;
     
@@ -231,7 +236,7 @@ public class HeroMovement : MonoBehaviour
                     rigibodyPlayer.velocity = new Vector2(dir.x * dashSpeed, rigibodyPlayer.velocity.y);
                 }
                 else
-                {
+                {    
                     rigibodyPlayer.velocity = new Vector2(dir.x * heroAttack.DashAttackSpeedPower, rigibodyPlayer.velocity.y);
                     
                     // Detect ennemis around
@@ -246,9 +251,7 @@ public class HeroMovement : MonoBehaviour
                     {
                         if (hitObject.transform.TryGetComponent(out EnemyLife enemyComponent))
                         {
-                            // Damage them
-                            Debug.Log("You hit an ennemy : " + enemyComponent);
-                            enemyComponent.TakeDamage(heroAttack.AttackDashPower);
+                            enemyComponent.EnemyTakeDamage(heroAttack.AttackDashPower);
                         }
                     }
                 }

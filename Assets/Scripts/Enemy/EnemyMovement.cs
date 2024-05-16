@@ -8,6 +8,9 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D rigidbodyEnemy;
     private float direction = -1f;
 
+    [Header("Player")] 
+    [SerializeField] private HeroMovement heroMovement;
+
     [Header("Enemy Detection Player")] 
     [SerializeField] private Transform enemyDetectionPoint;
     [SerializeField] private float circleEnemyDetectionCastRange;
@@ -33,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
     {
         rigidbodyEnemy = GetComponent<Rigidbody2D>();
         enemyAttack = GetComponent<EnemyAttack>();
+        heroMovement = FindObjectOfType<HeroMovement>(); 
     }
     
     private void Update()
@@ -45,10 +49,10 @@ public class EnemyMovement : MonoBehaviour
                 Patrol();
                 break;
             case EnemyState.AttackRange:
-                enemyAttack.AttackRange();
+                // enemyAttack.AttackRange();
                 break;
             case EnemyState.AttackMelee:
-                enemyAttack.AttackMelee();
+                // enemyAttack.AttackMelee();
                 break;
             default:
                 break;
@@ -57,9 +61,25 @@ public class EnemyMovement : MonoBehaviour
 
     private void Patrol()
     {
+        if (heroMovement.transform.position.x < transform.position.x)
+        {
+            direction = -1f;
+        }
+        else
+        {
+            direction = 1f;
+        }
+        
+        if ((direction == 1 && transform.localScale.x > 0f) || (direction == -1 && transform.localScale.x < 0f))
+        {
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+        
         rigidbodyEnemy.velocity = new Vector2(direction * enemySpeed, rigidbodyEnemy.velocity.y);
     }
-
+    
     private void CheckForPlayer()
     {
         RaycastHit2D hitObject = Physics2D.CircleCast(

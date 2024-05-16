@@ -94,14 +94,11 @@ public class HeroAttack : MonoBehaviour
             {
                 if (hitObject.transform.TryGetComponent(out EnemyLife enemyComponent))
                 {
-                    // Damage them
-                    Debug.Log("You hit an ennemy : " + enemyComponent);
-                    enemyComponent.TakeDamage(attackMeleePower);
+                    enemyComponent.EnemyTakeDamage(attackMeleePower);
                 }
             }   
         }
     }
-
     
     private void OnDrawGizmos()
     {
