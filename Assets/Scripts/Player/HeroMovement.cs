@@ -37,7 +37,7 @@ public class HeroMovement : MonoBehaviour
     [Header("Dash")]
     [SerializeField] private float dashSpeed = 12f;
     [SerializeField] private float dashDuration = 0.2f;
-    [SerializeField] private float dashInterval = 0.5f;
+    [SerializeField] private float dashInterval;
     private float dashTimer = 0f;
     private bool canDash;
     private float dashCooldownInterval = 0f;
@@ -90,6 +90,7 @@ public class HeroMovement : MonoBehaviour
         // Le dash
         StartDash(inputDash);
         Dash();
+        DashIntervalChanges();
     }
     
     #region Functions Basic Movement
@@ -158,6 +159,15 @@ public class HeroMovement : MonoBehaviour
                 buggingNumberEvent = buggingNumber
             });   
         }
+        else
+        {
+            buggingNumber = 0;
+            
+            OnBugging?.Invoke(this, new OnBuggingEventArgs()
+            {
+                buggingNumberEvent = buggingNumber
+            });   
+        }
     }
 
     private void ApplyMoreGravityAfterJump()
@@ -203,6 +213,15 @@ public class HeroMovement : MonoBehaviour
                 {
                     buggingNumber += 0.05f;   
                 }
+            
+                OnBugging?.Invoke(this, new OnBuggingEventArgs()
+                {
+                    buggingNumberEvent = buggingNumber
+                });   
+            }
+            else
+            {
+                buggingNumber = 0;
             
                 OnBugging?.Invoke(this, new OnBuggingEventArgs()
                 {
@@ -261,6 +280,18 @@ public class HeroMovement : MonoBehaviour
                 rigibodyPlayer.velocity = new Vector2(dir.x * playerSpeed, rigibodyPlayer.velocity.y);
                 canDash = false;
             }
+        }
+    }
+
+    private void DashIntervalChanges()
+    {
+        if (heroAttack.AttackMode)
+        {
+            dashInterval = 2 ;
+        }
+        else
+        {
+            dashInterval = 0.5f;
         }
     }
     

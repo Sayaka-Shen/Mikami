@@ -135,5 +135,6 @@ public class SpawnEnemy : MonoBehaviour
         heroTransform.position = lastTeleportPosition + teleportOffset;
         
         heroAttack.AttackMode = false;
+        GenerateQuota();
     }
 }

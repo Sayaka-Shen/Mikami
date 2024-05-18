@@ -6,7 +6,7 @@ public class GameInput : MonoBehaviour
     
     public bool GetInputDash()
     {
-        return Input.GetKeyDown(KeyCode.E);
+        return Input.GetKeyDown(KeyCode.LeftShift);
     }
     
     public bool GetInputJump()

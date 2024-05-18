@@ -41,7 +41,8 @@ public class BugBar : MonoBehaviour
                 enemySpawner.UpdateLastTeleportPosition(characterTransform.position);
                 
                 Vector3 teleportOffset = new Vector3(-0.2f, 0.2f, 0);
-                characterTransform.position = teleporterArene.position;
+                characterTransform.position = teleporterArene.position + teleportOffset;
+                
                 heroAttack.AttackMode = true;
             }
         }
