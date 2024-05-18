@@ -39,9 +39,11 @@ public class BugBar : MonoBehaviour
             if(Mathf.Approximately(imageBarComponent.fillAmount, 1f))
             {
                 enemySpawner.UpdateLastTeleportPosition(characterTransform.position);
+                
+                Vector3 teleportOffset = new Vector3(-0.2f, 0.2f, 0);
                 characterTransform.position = teleporterArene.position;
                 heroAttack.AttackMode = true;
-            }   
+            }
         }
     }
 

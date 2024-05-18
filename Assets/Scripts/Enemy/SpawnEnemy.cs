@@ -129,7 +129,11 @@ public class SpawnEnemy : MonoBehaviour
     IEnumerator WaitBeforeGoingBack()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("Evryone is dead bro"); 
-        heroTransform.position = lastTeleportPosition * 1.5f;
+        Debug.Log("Evryone is dead bro");
+        
+        Vector3 teleportOffset = new Vector3(-0.2f, 0.2f, 0);
+        heroTransform.position = lastTeleportPosition + teleportOffset;
+        
+        heroAttack.AttackMode = false;
     }
 }
