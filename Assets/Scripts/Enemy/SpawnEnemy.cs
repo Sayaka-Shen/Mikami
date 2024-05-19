@@ -29,7 +29,7 @@ public class SpawnEnemy : MonoBehaviour
     [Header("Player Information")] 
     [SerializeField] private HeroAttack heroAttack;
     [SerializeField] private Transform heroTransform;
-    private HeroLife heroLife;
+    [SerializeField] private HeroLife heroLife;
     
     private Vector3 lastTeleportPosition;
 
@@ -49,7 +49,6 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Start()
     {
-        heroLife = GetComponent<HeroLife>();
         GenerateQuota();
     }
 
@@ -75,6 +74,10 @@ public class SpawnEnemy : MonoBehaviour
         if (heroAttack.AttackMode && quota <= 0) 
         {
             StartCoroutine(WaitBeforeGoingBack());
+            
+            heroLife.CurrentHealth = heroLife.MaxHealth;
+            
+            
         }   
     }
 
@@ -131,11 +134,13 @@ public class SpawnEnemy : MonoBehaviour
     IEnumerator WaitBeforeGoingBack()
     {
         yield return new WaitForSeconds(2);
-        Debug.Log("Evryone is dead bro");
         
         Vector3 teleportOffset = new Vector3(-0.2f, 0.2f, 0);
         heroTransform.position = lastTeleportPosition + teleportOffset;
+        
+        // Update Life after tp to give the player back his full life
         heroLife.CurrentHealth = heroLife.MaxHealth;
+        heroLife.ChangeLifeBarEventOnOtherScript(heroLife.CurrentHealth);
         
         heroAttack.AttackMode = false;
         GenerateQuota();

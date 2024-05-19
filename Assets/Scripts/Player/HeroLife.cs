@@ -89,6 +89,14 @@ public class HeroLife : MonoBehaviour
         }
     }
 
+    public void ChangeLifeBarEventOnOtherScript(int currentHealth)
+    {
+        OnHeroLifeChanges?.Invoke(this, new OnHeroLifeChangesEventAgrs()
+        {
+            currentHealthHeroEvent = currentHealth
+        });  
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("DeathWall"))
