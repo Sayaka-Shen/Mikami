@@ -25,6 +25,9 @@ public class EnemyMovement : MonoBehaviour
 
     [Header("Enemy Attack")] 
     private EnemyAttack enemyAttack;
+
+    [Header("Spawn Ennemy")] 
+    private SpawnEnemy spawnEnemy;
     
     private enum EnemyState
     {
@@ -38,7 +41,8 @@ public class EnemyMovement : MonoBehaviour
     {
         rigidbodyEnemy = GetComponent<Rigidbody2D>();
         enemyAttack = GetComponent<EnemyAttack>();
-        heroMovement = FindObjectOfType<HeroMovement>(); 
+        heroMovement = FindObjectOfType<HeroMovement>();
+        spawnEnemy = FindObjectOfType<SpawnEnemy>();
     }
     
     private void Update()
@@ -133,7 +137,7 @@ public class EnemyMovement : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider != null && collider.gameObject != gameObject && currentState == EnemyState.Patrol)
+            if (collider != null && collider.gameObject != gameObject && currentState == EnemyState.Patrol && this.gameObject.CompareTag("EnemyMelee"))
             {
                 EnemyLife enemyComponent = collider.GetComponent<EnemyLife>();
                 

@@ -15,6 +15,11 @@ public class BugBar : MonoBehaviour
     [Header("Teleporter")] 
     [SerializeField] private Transform teleporterArene;
 
+    public Transform TeleporteArene
+    {
+        get { return teleporterArene; }
+    }
+
     [Header("Enemy Spawner")] 
     [SerializeField] private SpawnEnemy enemySpawner;
     

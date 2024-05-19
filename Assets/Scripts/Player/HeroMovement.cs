@@ -41,7 +41,7 @@ public class HeroMovement : MonoBehaviour
     [SerializeField] private float dashSpeed = 12f;
     [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private float dashInterval;
-    [SerializeField] private int dashLifeGiving = 5;
+    [SerializeField] private int dashLifeGiving = 10;
     private float dashTimer = 0f;
     private bool canDash;
     private float dashCooldownInterval = 0f;
@@ -293,7 +293,7 @@ public class HeroMovement : MonoBehaviour
     {
         if (heroAttack.AttackMode)
         {
-            dashInterval = 10;
+            dashInterval = 8;
         }
         else
         {

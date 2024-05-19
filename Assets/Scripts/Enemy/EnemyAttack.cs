@@ -7,7 +7,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private Transform baseShootPoint;
     [SerializeField] private GameObject projectilePrefab;
     private float projectileSpeed = 12f;
-    [SerializeField] private float projectileIntervalTimer = 3f;
+    [SerializeField] private float projectileIntervalTimer = 1f;
     private float projectileTime;
 
     [Header("Enemy Melee Attack Parameter")] 

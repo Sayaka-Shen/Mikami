@@ -750,6 +750,7 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.2
   dashInterval: 0.8
+  dashLifeGiving: 1
 --- !u!114 &2669045929419017779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -807,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  heroVisual: {fileID: 1263978082071105994}
 --- !u!1 &4408190580880839570
 GameObject:
   m_ObjectHideFlags: 0

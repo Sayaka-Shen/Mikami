@@ -29,6 +29,7 @@ public class SpawnEnemy : MonoBehaviour
     [Header("Player Information")] 
     [SerializeField] private HeroAttack heroAttack;
     [SerializeField] private Transform heroTransform;
+    private HeroLife heroLife;
     
     private Vector3 lastTeleportPosition;
 
@@ -48,6 +49,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Start()
     {
+        heroLife = GetComponent<HeroLife>();
         GenerateQuota();
     }
 
@@ -96,7 +98,7 @@ public class SpawnEnemy : MonoBehaviour
                 break;
         }
         
-        if (quota > 0 && enemySpawned.Count <= 6)
+        if (quota > 0 && enemySpawned.Count <= quota)
         {
             enemyInstancePrefab = Instantiate(enemyPrefab, enemyPosition.position, Quaternion.identity);
             enemySpawned.Add(enemyInstancePrefab);
@@ -133,6 +135,7 @@ public class SpawnEnemy : MonoBehaviour
         
         Vector3 teleportOffset = new Vector3(-0.2f, 0.2f, 0);
         heroTransform.position = lastTeleportPosition + teleportOffset;
+        heroLife.CurrentHealth = heroLife.MaxHealth;
         
         heroAttack.AttackMode = false;
         GenerateQuota();

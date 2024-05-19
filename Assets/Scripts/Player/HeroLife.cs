@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroLife : MonoBehaviour
@@ -8,11 +7,26 @@ public class HeroLife : MonoBehaviour
     [Header("Hero Statistics")]
     [SerializeField] private int maxHealth = 100;
     private int currentHealth;
-
+    private Transform heroTransform;
+    private HeroAttack heroAttack;
+    private BugBar bugBar;
+    private PlayerLifeBar heroLifeBar;
+    
     public int MaxHealth
     {
         get { return maxHealth; }
     }
+    
+    public int CurrentHealth
+    {
+        get { return currentHealth; }
+        set { currentHealth = value; }
+    }
+
+    [Header("Death Respawn Parameter")] 
+    [SerializeField] private GameObject heroVisual;
+    private Vector3 lastPosition;
+    private bool isDead = false;
     
     // Event when Hero take damage
     public event EventHandler<OnHeroLifeChangesEventAgrs> OnHeroLifeChanges;
@@ -25,6 +39,23 @@ public class HeroLife : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        heroTransform = GetComponent<Transform>();
+        heroAttack = GetComponent<HeroAttack>();
+        bugBar = FindObjectOfType<BugBar>();
+        heroLifeBar = GetComponentInChildren<PlayerLifeBar>();
+    }
+    
+    private void Update()
+    {
+        if (!heroAttack.AttackMode)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(heroTransform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
+
+            if (hit.collider != null)
+            {
+                lastPosition = heroTransform.position;   
+            }
+        }
     }
 
     public void HeroTakeDamage(int damage)
@@ -38,13 +69,54 @@ public class HeroLife : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            PlayerDeath();
+            if (heroAttack.AttackMode)
+            {
+                DieAttackMode();
+            }
         }
     }
 
     public void HeroRegenLife(int life)
     {
-        currentHealth += life;
+        if (heroAttack.AttackMode)
+        {
+            currentHealth += life;
+        
+            OnHeroLifeChanges?.Invoke(this, new OnHeroLifeChangesEventAgrs()
+            {
+                currentHealthHeroEvent = currentHealth
+            });   
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("DeathWall"))
+        {
+            currentHealth = 0;
+            
+            OnHeroLifeChanges?.Invoke(this, new OnHeroLifeChangesEventAgrs()
+            {
+                currentHealthHeroEvent = currentHealth
+            });
+
+            heroVisual.SetActive(false);
+            bugBar.gameObject.SetActive(false);
+            heroLifeBar.gameObject.SetActive(false);
+            StartCoroutine(DieNormalMode());
+        }
+    }
+
+    private IEnumerator DieNormalMode()
+    {
+        yield return new WaitForSeconds(1f);
+        
+        heroTransform.position = lastPosition;
+        heroVisual.SetActive(true);
+        bugBar.gameObject.SetActive(true);
+        heroLifeBar.gameObject.SetActive(true);
+
+        currentHealth = maxHealth;
         
         OnHeroLifeChanges?.Invoke(this, new OnHeroLifeChangesEventAgrs()
         {
@@ -52,8 +124,15 @@ public class HeroLife : MonoBehaviour
         });
     }
 
-    private void PlayerDeath()
+    private void DieAttackMode()
     {
-        Destroy(gameObject);
+        heroTransform.position = bugBar.TeleporteArene.position;
+
+        currentHealth = maxHealth;
+        
+        OnHeroLifeChanges?.Invoke(this, new OnHeroLifeChangesEventAgrs()
+        {
+            currentHealthHeroEvent = currentHealth
+        });
     }
 }
