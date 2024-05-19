@@ -161,12 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpeed: 3
-  heroMovement: {fileID: 0}
+  enemyJumpForce: 10
+  heroMovement: {fileID: 240122376632638831, guid: 8e3ab4c32a4528b46a0c3f3868a8bbc7, type: 3}
   enemyDetectionPoint: {fileID: 6758663316421267572}
   circleEnemyDetectionCastRange: 10
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &2880086409185261233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,8 +185,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseShootPoint: {fileID: 5849559484604343930}
   projectilePrefab: {fileID: 4517516029571193769, guid: 9603c2d79602c7f48ac47bd1d2a377c6, type: 3}
-  projectileSpeed: 12
   projectileIntervalTimer: 3
+  heroLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  enemyMeleeDetectionPointAttack: {fileID: 0}
+  meleeAttackCooldown: 1.5
+  circleMeleeEnemyAttackCastRange: 0.5
   heroTransform: {fileID: 4342905569696735364, guid: 8e3ab4c32a4528b46a0c3f3868a8bbc7, type: 3}
 --- !u!1 &4253453762252198446
 GameObject:
@@ -593,6 +602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageBarComponent: {fileID: 8880290390690825876}
   enemyLife: {fileID: 533987601203711407}
+  enemyTransform: {fileID: 5658193321431047978}
 --- !u!1 &9028239580490574442
 GameObject:
   m_ObjectHideFlags: 0

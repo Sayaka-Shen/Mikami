@@ -8,6 +8,9 @@ public class HeroMovement : MonoBehaviour
     private float inputVector;
     private bool inputJump;
     private bool inputDash;
+
+    [Header("Hero Entity")] 
+    private HeroLife heroLife;
     
     [Header("Movement")] 
     [SerializeField] private float playerSpeed = 10f;
@@ -38,6 +41,7 @@ public class HeroMovement : MonoBehaviour
     [SerializeField] private float dashSpeed = 12f;
     [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private float dashInterval;
+    [SerializeField] private int dashLifeGiving = 5;
     private float dashTimer = 0f;
     private bool canDash;
     private float dashCooldownInterval = 0f;
@@ -66,6 +70,7 @@ public class HeroMovement : MonoBehaviour
     private void Start()
     {
         heroAttack = GetComponent<HeroAttack>();
+        heroLife = GetComponent<HeroLife>();
     }
 
     private void Update()
@@ -271,6 +276,7 @@ public class HeroMovement : MonoBehaviour
                         if (hitObject.transform.TryGetComponent(out EnemyLife enemyComponent))
                         {
                             enemyComponent.EnemyTakeDamage(heroAttack.AttackDashPower);
+                            heroLife.HeroRegenLife(dashLifeGiving);   
                         }
                     }
                 }
@@ -287,7 +293,7 @@ public class HeroMovement : MonoBehaviour
     {
         if (heroAttack.AttackMode)
         {
-            dashInterval = 2 ;
+            dashInterval = 10;
         }
         else
         {

@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("Movement")] 
+    [Header("Enemy Movement")] 
     [SerializeField] private float enemySpeed = 1.5f;
     private Rigidbody2D rigidbodyEnemy;
     private float direction = -1f;
 
-    [Header("Player")] 
+    [Header("Enemy Statistics")] 
+    [SerializeField] private float enemyJumpForce = 10f;
+
+    [Header("Hero")] 
     [SerializeField] private HeroMovement heroMovement;
 
     [Header("Enemy Detection Player")] 
@@ -15,11 +18,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float circleEnemyDetectionCastRange;
     [SerializeField] private LayerMask playerLayer;
     private EnemyState currentState = EnemyState.Patrol;
-
-    public LayerMask PlayerLayer
-    {
-        get { return playerLayer; }
-    }
+    
+    [Header("Enemy Detection Allies")]
+    [SerializeField] private LayerMask enemyLayer;
+    private Vector2 directionVector;
 
     [Header("Enemy Attack")] 
     private EnemyAttack enemyAttack;
@@ -27,7 +29,8 @@ public class EnemyMovement : MonoBehaviour
     private enum EnemyState
     {
         Patrol,
-        AttackMelee,
+        AttackMeleeFast,
+        AttackMeleeSlow,
         AttackRange
     }
     
@@ -41,21 +44,8 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         CheckForPlayer();
-        
-        switch (currentState)
-        {
-            case EnemyState.Patrol:
-                Patrol();
-                break;
-            case EnemyState.AttackRange:
-                // enemyAttack.AttackRange();
-                break;
-            case EnemyState.AttackMelee:
-                // enemyAttack.AttackMelee();
-                break;
-            default:
-                break;
-        }
+        CheckEnemyState();
+        CheckForAllies();
     }
 
     private void Patrol()
@@ -91,14 +81,18 @@ public class EnemyMovement : MonoBehaviour
         if (hitObject.transform != null)
         {
             if (hitObject.transform.TryGetComponent(out HeroAttack heroComponent))
-            {
+            { 
                 if (circleEnemyDetectionCastRange >= 10)
                 {
                     currentState = EnemyState.AttackRange;
                 }
-                else if(circleEnemyDetectionCastRange <= 0.8f)
+                else if(circleEnemyDetectionCastRange == 1f)
                 {
-                    currentState = EnemyState.AttackMelee;
+                    currentState = EnemyState.AttackMeleeSlow;
+                }
+                else if(circleEnemyDetectionCastRange == 0.8f)
+                {
+                    currentState = EnemyState.AttackMeleeFast;
                 }
             }
             else
@@ -112,10 +106,51 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void CheckEnemyState()
+    {
+        switch (currentState)
+        {
+            case EnemyState.Patrol:
+                Patrol();
+                break;
+            case EnemyState.AttackMeleeFast:
+                enemyAttack.AttackFastMelee();
+                break;
+            case EnemyState.AttackMeleeSlow:
+                enemyAttack.AttackSlowMelee();
+                break;
+            case EnemyState.AttackRange:
+                enemyAttack.AttackRange();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void CheckForAllies()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1f, enemyLayer);
+
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider != null && collider.gameObject != gameObject && currentState == EnemyState.Patrol)
+            {
+                EnemyLife enemyComponent = collider.GetComponent<EnemyLife>();
+                
+                if (enemyComponent != null)
+                {
+                    rigidbodyEnemy.velocity = new Vector2(rigidbodyEnemy.velocity.x, enemyJumpForce);
+                    break;
+                }
+            }
+        }
+    }
+    
     private void OnDrawGizmos()
     {
         // Draw detection zone
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(enemyDetectionPoint.position, circleEnemyDetectionCastRange);
+        Gizmos.DrawRay(transform.position, directionVector);
     }
 }

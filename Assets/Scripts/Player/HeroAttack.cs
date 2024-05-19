@@ -10,7 +10,6 @@ public class HeroAttack : MonoBehaviour
     [SerializeField] private int attackMeleePower = 35;
     [SerializeField] private int attackDashPower = 60;
     [SerializeField] private float dashAttackSpeedPower = 30f;
-    private HeroMovement heroMovement;
 
     public int AttackDashPower
     {
@@ -63,7 +62,6 @@ public class HeroAttack : MonoBehaviour
     private void Start()
     {
         heroAnimator = GetComponent<Animator>();
-        heroMovement = GetComponent<HeroMovement>();
     }
 
     private void Update()
@@ -73,6 +71,8 @@ public class HeroAttack : MonoBehaviour
         
         MeleeAttack();
     }
+    
+    #region Function To Attack The Ennemy
     
     private void MeleeAttack()
     {
@@ -99,6 +99,8 @@ public class HeroAttack : MonoBehaviour
         }
     }
     
+    #endregion
+
     private void OnDrawGizmos()
     {
         // Draw detection zone

@@ -430,7 +430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b133b5dcf9a35734891e70a1de57fa49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageBarComponent: {fileID: 0}
+  imageBarComponent: {fileID: 3634612127478033001}
+  heroLife: {fileID: 3714362917355798862}
+  heroTransform: {fileID: 5608218563167789600}
 --- !u!1 &3949356220543634346
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +523,7 @@ GameObject:
   - component: {fileID: 240122376632638831}
   - component: {fileID: 2669045929419017779}
   - component: {fileID: 1979282686630302201}
+  - component: {fileID: 3714362917355798862}
   m_Layer: 7
   m_Name: Hero
   m_TagString: Untagged
@@ -791,6 +794,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3714362917355798862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4342905569696735364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22fe496dcfd9a7428e09388abc23ec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &4408190580880839570
 GameObject:
   m_ObjectHideFlags: 0
