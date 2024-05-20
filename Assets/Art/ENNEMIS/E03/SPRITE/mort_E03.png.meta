@@ -1,0 +1,334 @@
+fileFormatVersion: 2
+guid: 52bb7fa305802894cb59ebe430531581
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 134
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mort_E03_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 709
+        width: 484
+        height: 709
+      alignment: 9
+      pivot: {x: 0.61582553, y: 0.3837231}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17715e8f351575d4996dd53e36d0bcad
+      internalID: -1362020576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_1
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 709
+        width: 466
+        height: 709
+      alignment: 9
+      pivot: {x: 0.5495353, y: 0.3813975}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06176b923a5dc9a49a141df37a9aea49
+      internalID: 303178577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_2
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 709
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.5416196, y: 0.38139758}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51972a8d3d435b24a83f00d04a39eb78
+      internalID: -1874902732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_3
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 709
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.47919172, y: 0.38139766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84438940a90c30540b4705461a0df81e
+      internalID: -566863533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_4
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 709
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.42369953, y: 0.38139766}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0d72ac2bafe974ba12b80d63847df5
+      internalID: 1411277152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.56242883, y: 0.46046582}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16744e71d83baf54d877a2b8ad4420ee
+      internalID: 255905107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_6
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 0
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.55896056, y: 0.46046582}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23415e4e62e526941b47d142d90b19c9
+      internalID: -1144337996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_7
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 0
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.5346831, y: 0.4581403}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4756c8bd233104488900bc466b6c94e
+      internalID: 931752364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_8
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 0
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.4861277, y: 0.46046582}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 102cf5e37b037d840876b46b0dff3c04
+      internalID: 243330074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mort_E03_9
+      rect:
+        serializedVersion: 2
+        x: 1900
+        y: 0
+        width: 475.4
+        height: 709
+      alignment: 9
+      pivot: {x: 0.40636063, y: 0.47674462}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0193fca8fe83294982432a794f3925d
+      internalID: -709100077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      mort_E03_0: -1362020576
+      mort_E03_1: 303178577
+      mort_E03_2: -1874902732
+      mort_E03_3: -566863533
+      mort_E03_4: 1411277152
+      mort_E03_5: 255905107
+      mort_E03_6: -1144337996
+      mort_E03_7: 931752364
+      mort_E03_8: 243330074
+      mort_E03_9: -709100077
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

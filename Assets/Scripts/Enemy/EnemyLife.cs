@@ -19,11 +19,12 @@ public class EnemyLife : MonoBehaviour
     }
 
     [Header("Enemy Visual")] 
-    [SerializeField] private GameObject enemyVisual;
     [SerializeField] private GameObject lifeBarEnemyVisual;
 
     [Header("Spawn Enemy")] 
     private SpawnEnemy spawnEnemy;
+
+    private Animator enemyAnimator;
     
     
     // Event for enemy life
@@ -37,6 +38,7 @@ public class EnemyLife : MonoBehaviour
     void Start()
     {
         spawnEnemy = FindObjectOfType<SpawnEnemy>();
+        enemyAnimator = GetComponent<Animator>();
         currentHealth = maxHealth;
     }
 
@@ -58,10 +60,12 @@ public class EnemyLife : MonoBehaviour
     
     private void EnemyDeath()
     {
+        enemyAnimator.SetTrigger("IsDistanceDead");
+        enemyAnimator.SetTrigger("IsSlowEnemyDead");
+        enemyAnimator.SetTrigger("IsFastEnemyDead");
         Collider2D enemyCollider = GetComponent<Collider2D>();
         enemyCollider.enabled = false;
-        
-        enemyVisual.SetActive(false);
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         lifeBarEnemyVisual.SetActive(false);
         
         spawnEnemy.Quota--;
@@ -76,6 +80,8 @@ public class EnemyLife : MonoBehaviour
 
     IEnumerator DestroyGameobject()
     {
+        yield return new WaitForSeconds(enemyAnimator.GetCurrentAnimatorStateInfo(0).length);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }

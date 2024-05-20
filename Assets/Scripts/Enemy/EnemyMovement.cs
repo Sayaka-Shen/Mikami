@@ -5,6 +5,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Enemy Movement")] 
     [SerializeField] private float enemySpeed = 1.5f;
     private Rigidbody2D rigidbodyEnemy;
+    private Animator enemyAnimator;
     private float direction = -1f;
 
     [Header("Enemy Statistics")] 
@@ -43,6 +44,7 @@ public class EnemyMovement : MonoBehaviour
         enemyAttack = GetComponent<EnemyAttack>();
         heroMovement = FindObjectOfType<HeroMovement>();
         spawnEnemy = FindObjectOfType<SpawnEnemy>();
+        enemyAnimator = GetComponent<Animator>();
     }
     
     private void Update()
@@ -50,6 +52,7 @@ public class EnemyMovement : MonoBehaviour
         CheckForPlayer();
         CheckEnemyState();
         CheckForAllies();
+        enemyAnimator.SetFloat("Speed", Mathf.Abs(rigidbodyEnemy.velocity.x));
     }
 
     private void Patrol()

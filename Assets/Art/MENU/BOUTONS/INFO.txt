@@ -1,0 +1,6 @@
+-Dans les noms on trouve 1 ou 2 a la fin le 1 c'est la base et le 2 c'est quand on passe la souris dessus ou/et on clique :)
+
+Bouton a utiliser:
+
+-Menu principal -> commencer / quitter
+-Menu pause + game over -> continuer / quitter

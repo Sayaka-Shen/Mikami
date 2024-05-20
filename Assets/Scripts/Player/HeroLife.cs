@@ -11,6 +11,7 @@ public class HeroLife : MonoBehaviour
     private HeroAttack heroAttack;
     private BugBar bugBar;
     private PlayerLifeBar heroLifeBar;
+    private Animator animator;
     
     public int MaxHealth
     {
@@ -26,7 +27,7 @@ public class HeroLife : MonoBehaviour
     [Header("Death Respawn Parameter")] 
     [SerializeField] private GameObject heroVisual;
     private Vector3 lastPosition;
-    private bool isDead = false;
+    //private bool isDead = false;
     
     // Event when Hero take damage
     public event EventHandler<OnHeroLifeChangesEventAgrs> OnHeroLifeChanges;
@@ -43,6 +44,7 @@ public class HeroLife : MonoBehaviour
         heroAttack = GetComponent<HeroAttack>();
         bugBar = FindObjectOfType<BugBar>();
         heroLifeBar = GetComponentInChildren<PlayerLifeBar>();
+        animator = GetComponent<Animator>();
     }
     
     private void Update()
@@ -61,6 +63,8 @@ public class HeroLife : MonoBehaviour
     public void HeroTakeDamage(int damage)
     {
         currentHealth -= damage;
+
+        animator.SetTrigger("IsDamaged");
         
         OnHeroLifeChanges?.Invoke(this, new OnHeroLifeChangesEventAgrs()
         {
@@ -117,7 +121,8 @@ public class HeroLife : MonoBehaviour
 
     private IEnumerator DieNormalMode()
     {
-        yield return new WaitForSeconds(1f);
+        animator.SetTrigger("IsDead");
+        yield return new WaitForSeconds(0.7f);
         
         heroTransform.position = lastPosition;
         heroVisual.SetActive(true);
@@ -134,6 +139,8 @@ public class HeroLife : MonoBehaviour
 
     private void DieAttackMode()
     {
+        animator.SetTrigger("IsDead");
+
         heroTransform.position = bugBar.TeleporteArene.position;
 
         currentHealth = maxHealth;

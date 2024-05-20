@@ -18,8 +18,8 @@ public class EnemyAttack : MonoBehaviour
     private bool isEnemyMeleeAttacking = false;
 
     [Header("Enemy Damage")] 
-    private int FastEnemyAttackDamage = 10;
-    private int SlowEnemyAttackDamage = 20;
+    private int FastEnemyAttackDamage = 5;
+    private int SlowEnemyAttackDamage = 10;
 
     [Header("Hero Entity")] 
     [SerializeField] private GameObject heroTransform;
@@ -27,8 +27,6 @@ public class EnemyAttack : MonoBehaviour
     
     [Header("Animator")] 
     private Animator enemyAnimator;
-    private const string IsFastEnemyAttacking = "IsFastEnemyAttacking";
-    private const string IsSlowEnemyAttacking = "IsSlowEnemyAttacking";
 
     private void Start()
     {
@@ -45,6 +43,8 @@ public class EnemyAttack : MonoBehaviour
         if (projectileTime > 0) return;
 
         projectileTime = projectileIntervalTimer;
+
+        enemyAnimator.SetTrigger("IsDistanceShooting");
 
         GameObject instanceProjectilePrefab = Instantiate(projectilePrefab, baseShootPoint.position, Quaternion.identity);
         Rigidbody2D rigidbodyProjectile = instanceProjectilePrefab.GetComponent<Rigidbody2D>();
@@ -104,7 +104,7 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator PerformFastMeleeAttack()
     {
         isEnemyMeleeAttacking = true;
-        enemyAnimator.SetTrigger(IsFastEnemyAttacking);
+        enemyAnimator.SetTrigger("IsFastEnemyAttacking");
         heroLife.HeroTakeDamage(FastEnemyAttackDamage);
 
         yield return new WaitForSeconds(meleeAttackCooldown);
@@ -114,7 +114,8 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator PerformSlowMeleeAttack()
     {
         isEnemyMeleeAttacking = true;
-        enemyAnimator.SetTrigger(IsSlowEnemyAttacking);
+        enemyAnimator.SetTrigger("IsFastEnemyAttacking");
+        enemyAnimator.SetTrigger("IsSlowEnemyAttacking");
         heroLife.HeroTakeDamage(SlowEnemyAttackDamage);
 
         yield return new WaitForSeconds(meleeAttackCooldown);

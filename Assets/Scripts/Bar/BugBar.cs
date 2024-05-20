@@ -6,6 +6,7 @@ public class BugBar : MonoBehaviour
 {
     [Header("Bar Component")] 
     [SerializeField] private Image imageBarComponent;
+    private Animator animator;
 
     [Header("Entity Component")] 
     [SerializeField] private HeroMovement heroMovement;
@@ -26,7 +27,7 @@ public class BugBar : MonoBehaviour
     private void Start()
     {
         heroMovement.OnBugging += HeroMovement_OnBugging;
-        
+        animator = heroMovement.GetComponent<Animator>();
         imageBarComponent.fillAmount = 0f;
     }
 
@@ -44,10 +45,10 @@ public class BugBar : MonoBehaviour
             if(Mathf.Approximately(imageBarComponent.fillAmount, 1f))
             {
                 enemySpawner.UpdateLastTeleportPosition(characterTransform.position);
-                
+                animator.SetTrigger("IsChainging");
                 Vector3 teleportOffset = new Vector3(-0.2f, 0.2f, 0);
                 characterTransform.position = teleporterArene.position + teleportOffset;
-                
+
                 heroAttack.AttackMode = true;
             }
         }

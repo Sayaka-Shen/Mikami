@@ -11,6 +11,8 @@ public class HeroMovement : MonoBehaviour
 
     [Header("Hero Entity")] 
     private HeroLife heroLife;
+    [SerializeField] private Animator animator;
+    
     
     [Header("Movement")] 
     [SerializeField] private float playerSpeed = 10f;
@@ -96,6 +98,8 @@ public class HeroMovement : MonoBehaviour
         StartDash(inputDash);
         Dash();
         DashIntervalChanges();
+        
+        animator.SetFloat("Speed", Mathf.Abs(Input.GetAxisRaw("Horizontal") * playerSpeed));
     }
     
     #region Functions Basic Movement
@@ -126,11 +130,13 @@ public class HeroMovement : MonoBehaviour
         if (inputJump && (IsTouchingGround() || coyoteTimeCounter > 0f)) 
         {
             ApplyVerticalVelocityAndDoubleJump(true);
+            animator.SetTrigger("IsJumping");
         } 
         else if(inputJump && !IsTouchingGround())
         {
             if (canDoubleJump)
             {
+                animator.SetTrigger("IsJumping");
                 ApplyVerticalVelocityAndDoubleJump(false);
             }
         }
@@ -210,6 +216,7 @@ public class HeroMovement : MonoBehaviour
             canDash = true;
             dashTimer = 0f;
             dashCooldownInterval = dashInterval;
+            animator.SetTrigger("IsDashing");
 
             // barre de bug uniquement dans le monde normal
             if (!heroAttack.AttackMode)

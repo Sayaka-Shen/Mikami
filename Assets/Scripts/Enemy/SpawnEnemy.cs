@@ -117,7 +117,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void GenerateQuota()
     {
-        quota = Random.Range(15, 20);
+        quota = Random.Range(6, 12);
     }
 
     private void DisplayQuota()
