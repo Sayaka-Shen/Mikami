@@ -5,7 +5,7 @@ public class Projectile : MonoBehaviour
 {
     [Header("Projectile Stats")] 
     private Rigidbody2D projectileRigidbody;
-    private int projectileDamage = 10;
+    private int projectileDamage = 8;
     private float secondBeforeDestruction = 4f;
     
     [Header("Collision")] 

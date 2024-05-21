@@ -18,8 +18,8 @@ public class EnemyAttack : MonoBehaviour
     private bool isEnemyMeleeAttacking = false;
 
     [Header("Enemy Damage")] 
-    private int FastEnemyAttackDamage = 5;
-    private int SlowEnemyAttackDamage = 10;
+    private int FastEnemyAttackDamage = 10;
+    private int SlowEnemyAttackDamage = 5;
 
     [Header("Hero Entity")] 
     [SerializeField] private GameObject heroTransform;

@@ -541,8 +541,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.58, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5544081616986925413}
   - {fileID: 894125026427177457}
@@ -741,13 +741,13 @@ MonoBehaviour:
   gameInput: {fileID: 0}
   animator: {fileID: 1979282686630302201}
   playerSpeed: 10
-  jumpForce: 10
+  jumpForce: 11
   groundCheck: {fileID: 894125026427177457}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   coyoteTimeDuration: 0.2
-  fallMultiplier: 7
+  fallMultiplier: 6
   dashSpeed: 20
   dashDuration: 0.2
   dashInterval: 0.8
@@ -765,6 +765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInput: {fileID: 0}
+  heroMove: {fileID: 240122376632638831}
   attackMeleePower: 35
   attackDashPower: 60
   dashAttackSpeedPower: 30
@@ -850,7 +851,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1570839934, guid: d44eda717b74fb74796dd96763f8fdf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

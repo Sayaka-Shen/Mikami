@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 268
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +95,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: saut_attaque_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 1182
+        width: 421
+        height: 864
+      alignment: 9
+      pivot: {x: 0.45069966, y: 0.4815907}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414883a4a7bc6d24a9eb5653a9ef7184
+      internalID: -1065780906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_1
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 1142
+        width: 371
+        height: 904
+      alignment: 9
+      pivot: {x: 0.53452766, y: 0.5059043}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5bb18a78aba6b489d85d3c3e53a32d
+      internalID: -290245668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_2
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1124
+        width: 382
+        height: 922
+      alignment: 9
+      pivot: {x: 0.5279445, y: 0.5138935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e949fc314e6de23459fce3c316a9ff75
+      internalID: -656952638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_3
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 1284
+        width: 404
+        height: 764
+      alignment: 9
+      pivot: {x: 0.53699183, y: 0.41896096}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70cbecca96fb2af4b814eaa28028406c
+      internalID: -708767227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_4
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 1322
+        width: 447
+        height: 726
+      alignment: 9
+      pivot: {x: 0.5071642, y: 0.3882527}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3e7e09da359b574490485c3f0615ebc
+      internalID: 1637830019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_5
+      rect:
+        serializedVersion: 2
+        x: 2162
+        y: 1302
+        width: 732
+        height: 744
+      alignment: 9
+      pivot: {x: 0.34396112, y: 0.399565}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eaeacee86c874845beab06a91f83b0b
+      internalID: 1795841696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_6
+      rect:
+        serializedVersion: 2
+        x: 2913
+        y: 1291
+        width: 736
+        height: 753
+      alignment: 9
+      pivot: {x: 0.35641214, y: 0.40643594}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d91261b5160709d4e87e071df3026bfb
+      internalID: -880614399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 374
+        width: 713
+        height: 738
+      alignment: 9
+      pivot: {x: 0.33861774, y: 0.41294715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86d111cb82fa0642b38e1fb0090d2f8
+      internalID: -806142907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: saut_attaque_8
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 376
+        width: 634
+        height: 734
+      alignment: 9
+      pivot: {x: 0.3669062, y: 0.41769826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 241b301c01f385040b6b07e3536ab52a
+      internalID: -376234241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +295,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      saut_attaque_0: -1065780906
+      saut_attaque_1: -290245668
+      saut_attaque_11: 1353547806
+      saut_attaque_13: -471100767
+      saut_attaque_15: 1417506094
+      saut_attaque_16: 764509498
+      saut_attaque_17: 643512997
+      saut_attaque_18: 322723485
+      saut_attaque_19: 1107667522
+      saut_attaque_2: -656952638
+      saut_attaque_20: -1964734486
+      saut_attaque_21: -730763208
+      saut_attaque_22: -265068167
+      saut_attaque_24: 1166969340
+      saut_attaque_3: -708767227
+      saut_attaque_4: 1637830019
+      saut_attaque_5: 1795841696
+      saut_attaque_6: -880614399
+      saut_attaque_7: -806142907
+      saut_attaque_8: -376234241
+      saut_attaque_9: 778225194
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

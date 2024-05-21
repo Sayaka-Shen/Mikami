@@ -8,6 +8,7 @@ public class HeroMovement : MonoBehaviour
     private float inputVector;
     private bool inputJump;
     private bool inputDash;
+    private bool inputAtk;
 
     [Header("Hero Entity")] 
     private HeroLife heroLife;
@@ -81,6 +82,7 @@ public class HeroMovement : MonoBehaviour
         inputVector = gameInput.GetInputMovement();
         inputJump = gameInput.GetInputJump();
         inputDash = gameInput.GetInputDash();
+        inputAtk = gameInput.GetInputMeleeAttack();
         
         // Les mouvements de base avec le skin qui se retourne
         Walk(inputVector);
@@ -129,8 +131,8 @@ public class HeroMovement : MonoBehaviour
     {
         if (inputJump && (IsTouchingGround() || coyoteTimeCounter > 0f)) 
         {
-            ApplyVerticalVelocityAndDoubleJump(true);
             animator.SetTrigger("IsJumping");
+            ApplyVerticalVelocityAndDoubleJump(true);
         } 
         else if(inputJump && !IsTouchingGround())
         {
@@ -147,7 +149,7 @@ public class HeroMovement : MonoBehaviour
         }
     }
 
-    private bool IsTouchingGround()
+    public bool IsTouchingGround()
     {
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.4f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
@@ -300,7 +302,7 @@ public class HeroMovement : MonoBehaviour
     {
         if (heroAttack.AttackMode)
         {
-            dashInterval = 8;
+            dashInterval = 6.5f;
         }
         else
         {

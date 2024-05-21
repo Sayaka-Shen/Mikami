@@ -122,7 +122,7 @@ public class HeroLife : MonoBehaviour
     private IEnumerator DieNormalMode()
     {
         animator.SetTrigger("IsDead");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
         
         heroTransform.position = lastPosition;
         heroVisual.SetActive(true);

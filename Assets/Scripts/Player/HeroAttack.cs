@@ -4,11 +4,12 @@ public class HeroAttack : MonoBehaviour
 {
     [Header("Game Input")] 
     [SerializeField] private GameInput gameInput;
+    [SerializeField] private HeroMovement heroMove;
     private bool inputMeleeAttack;
     
     [Header("Player Attack Stats")] 
     [SerializeField] private int attackMeleePower = 35;
-    [SerializeField] private int attackDashPower = 60;
+    [SerializeField] private int attackDashPower = 65;
     [SerializeField] private float dashAttackSpeedPower = 30f;
 
     public int AttackDashPower
@@ -70,6 +71,7 @@ public class HeroAttack : MonoBehaviour
         inputMeleeAttack = gameInput.GetInputMeleeAttack();
         
         MeleeAttack();
+        JumpAttack();
     }
     
     #region Function To Attack The Ennemy
@@ -96,6 +98,30 @@ public class HeroAttack : MonoBehaviour
                     enemyComponent.EnemyTakeDamage(attackMeleePower);
                 }
             }   
+        }
+    }
+    private void JumpAttack()
+    {
+        if (attackMode && !heroMove.IsTouchingGround() && inputMeleeAttack)
+        {
+            heroAnimator.SetTrigger("IsJumpAttacking");
+
+            // Detect ennemies around
+            RaycastHit2D hitObject = Physics2D.CircleCast(
+                detectionPointMeleeAttack.position, 
+                circleMeleeAttackCastRange, 
+                Vector2.right, 
+                circleMeleeAttackCastRange, 
+                enemyLayer);
+            
+
+            if (hitObject.transform != null)
+            {
+                if (hitObject.transform.TryGetComponent(out EnemyLife enemyComponent))
+                {
+                    enemyComponent.EnemyTakeDamage(50);
+                }
+            } 
         }
     }
     

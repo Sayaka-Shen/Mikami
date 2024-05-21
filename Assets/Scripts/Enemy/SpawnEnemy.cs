@@ -117,7 +117,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void GenerateQuota()
     {
-        quota = Random.Range(6, 12);
+        quota = Random.Range(5, 10);
     }
 
     private void DisplayQuota()
@@ -133,7 +133,7 @@ public class SpawnEnemy : MonoBehaviour
 
     IEnumerator WaitBeforeGoingBack()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.2f);
         
         Vector3 teleportOffset = new Vector3(-0.2f, 0.2f, 0);
         heroTransform.position = lastTeleportPosition + teleportOffset;
